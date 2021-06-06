@@ -254,7 +254,7 @@ public class CustomerInfo extends javax.swing.JFrame {
 
         lbllnum.setText("Enter Phone Number:");
 
-        jButton1.setText("Proceed to Airline Type");
+        jButton1.setText("Transaction");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -266,33 +266,30 @@ public class CustomerInfo extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(157, 157, 157)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(157, 157, 157)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(lbllnum)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(numtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(lbllnum)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(numtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(lblfname)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                                    .addComponent(fnametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblmname)
-                                        .addComponent(lbllname)
-                                        .addComponent(lbllage))
-                                    .addGap(18, 18, 18)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(mnametxt, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
-                                        .addComponent(lnametxt)
-                                        .addComponent(agetxt))))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(289, 289, 289)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(336, Short.MAX_VALUE))
+                                .addComponent(lblfname)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                                .addComponent(fnametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblmname)
+                                    .addComponent(lbllname)
+                                    .addComponent(lbllage))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(mnametxt, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+                                    .addComponent(lnametxt)
+                                    .addComponent(agetxt))))))
+                .addContainerGap(366, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -317,9 +314,9 @@ public class CustomerInfo extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbllnum)
                     .addComponent(numtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addGap(46, 46, 46))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
 
         pack();
@@ -331,35 +328,53 @@ public class CustomerInfo extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-       
-     
-          Transaction obj = new Transaction();
+       Transaction trans = new Transaction();
         int age = Integer.parseInt(agetxt.getText());
+        int num = Integer.parseInt(numtxt.getText());
+        Destination desti = new Destination();
         if ( age < 19 && age >=0){
         
            JOptionPane.showMessageDialog(this,"need guidance");
         }
         
-         else if (age < 0)
+         else if (age < 0 || age >120)
          {
          JOptionPane.showMessageDialog(this,"invalid age");
          }
          else{
-         this.dispose();
-         Destination desti = new Destination();
-          desti.setVisible(true);
          
-       
+         /** desti = new Destination();
+          desti.setVisible(true);*/
+         trans.setVisible(true);
+          dispose();
+          /**ID*/
+         int num1;
+         String id1="";
+         num1 =1325 + (int) (Math.random()*4328);
+         id1 += num1 + 1325;
+         trans.idlbl.setText(id1);
+         /**Customer Info*/
          mbpfname[0] = fnametxt.getText();
          mbpmname[0] = mnametxt.getText();
          mbplname[0] =lnametxt.getText();
-         obj.fnamelbl.setText(mbpfname[0]);
-         obj.mnamelbl.setText(mbpmname[0]);
-         obj.lnamelbl.setText(mbplname[0]);
-         }
-         
-         
+         mbpage[0] = agetxt.getText();
+         mbpnum[0] = numtxt.getText();
+         trans.fnamelbl.setText(mbpfname[0]);
+         trans.mnamelbl.setText(mbpmname[0]);
+         trans.lnamelbl.setText(mbplname[0]);
+         trans.agelbl.setText(mbpage[0]);
+         trans.numlbl.setText(mbpnum[0]);
+         /**Airplane Type*/
+         AirlineType air = new AirlineType();
+         String select = air.aircombo.getSelectedItem().toString();
+        trans.airlbl.setText(select);
+        /** Destination*/
+        String opt  = desti.desticombo.getSelectedItem().toString();
+        trans.destilbl.setText(opt);
         
+        
+         
+         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

@@ -112,13 +112,21 @@ public class Destination extends javax.swing.JFrame {
 
     private void desticomboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desticomboActionPerformed
         // TODO add your handling code here:
+        
+        
     }//GEN-LAST:event_desticomboActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        this.dispose();
+        dispose();
         AirlineType air = new AirlineType();
         air.setVisible(true);
+        Transaction trans = new Transaction();
+        String opt  = desticombo.getSelectedItem().toString();
+        trans.lnamelbl.setText(opt);
+        CustomerInfo cust = new CustomerInfo();
+        trans.mnamelbl.setText(cust.mbpmname[0]);
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -159,7 +167,7 @@ public class Destination extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Destitable;
     private javax.swing.JLabel chooselbl;
-    private javax.swing.JComboBox<String> desticombo;
+    public javax.swing.JComboBox<String> desticombo;
     private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables

@@ -5,6 +5,8 @@
  */
 package basta;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author neilg
@@ -33,7 +35,7 @@ public class AirlineType extends javax.swing.JFrame{
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        ticbtn.setText("Proceed to ticket info");
+        ticbtn.setText("Proceed to Customer Info");
         ticbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ticbtnActionPerformed(evt);
@@ -41,6 +43,11 @@ public class AirlineType extends javax.swing.JFrame{
         });
 
         aircombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Private", "Business", "Regular" }));
+        aircombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aircomboActionPerformed(evt);
+            }
+        });
 
         arilbl.setText("Airplane Type");
 
@@ -75,10 +82,26 @@ public class AirlineType extends javax.swing.JFrame{
 
     private void ticbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ticbtnActionPerformed
         // TODO add your handling code here:
-           dispose();
-         Transaction tran = new Transaction();
-         tran.setVisible(true);
+          dispose();
+          CustomerInfo cust = new CustomerInfo();
+         Transaction trans = new Transaction();
+         cust.setVisible(true);
+        String select = aircombo.getSelectedItem().toString();
+        trans.fnamelbl.setText(select);
+        Destination desti = new Destination();
+        String opt  = desti.desticombo.getSelectedItem().toString();
+        trans.lnamelbl.setText(opt);
+        /**CustomerInfo cust = new CustomerInfo();
+         trans.fnamelbl.setText(cust.mbpfname[0]);
+         trans.mnamelbl.setText(cust.mbpmname[0]);
+         trans.lnamelbl.setText(cust.mbplname[0]);*/
+        
     }//GEN-LAST:event_ticbtnActionPerformed
+
+    private void aircomboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aircomboActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_aircomboActionPerformed
 
     /**
      * @param args the command line arguments
